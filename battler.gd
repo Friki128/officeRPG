@@ -1,7 +1,7 @@
 extends Node
 @export var moveset:Array[Node]
 @onready var lifeComponent = get_node("lifeComponent")
-@export var hp = 10
+@export var hp = 100
 @onready var statusComponent = get_node("statusComponent")
 @export var description : String
 var rival = null
@@ -9,7 +9,9 @@ var bonusAccuracy = 0
 var bonusDamage = 0
 var bonusDefense = 0
 var bonusDodge = 0
+var speedBonus = 0
 var incapacitated = false
+
 
 func _ready():
 	lifeComponent.set_initial_hp(hp)
@@ -26,7 +28,7 @@ func pick_move(move):
 	statusComponent.afflict_start()
 	if incapacitated: return
 	var target = rival
-	if move.getTargetType() == "self": target = self
+	if move.getTargetType() == "Self": target = self
 	move.activate(target, bonusAccuracy, bonusDamage)
 	statusComponent.afflict_end()
 	setIncapacitated(false)
@@ -34,7 +36,7 @@ func pick_move(move):
 func hit(ammount, type, accuracy):
 	var hit_attempt = randi_range(0,100)
 	if hit_attempt + bonusDodge > accuracy: return false
-	if type == "normal":
+	if type == "Normal":
 		lifeComponent.damage(ammount - bonusDefense)
 	else:
 		lifeComponent.percentage_damage(ammount)
@@ -43,7 +45,7 @@ func hit(ammount, type, accuracy):
 func heal(ammount, type, accuracy):
 	var heal_attempt = randi_range(0,100)
 	if heal_attempt > accuracy: return false
-	if type == "normal":
+	if type == "Normal":
 		lifeComponent.heal(ammount)
 	else:
 		lifeComponent.percentage_heal(ammount)
@@ -61,8 +63,9 @@ func setIncapacitated(status):
 func removeStatus():
 	statusComponent.removeStatus()
 
-func setBonuses(damage, defense, accuracy, dodge):
+func setBonuses(damage, defense, accuracy, dodge, speed):
 	bonusDamage = damage
 	bonusDefense = defense
 	bonusAccuracy = accuracy
 	bonusDodge = dodge
+	speedBonus = speed
