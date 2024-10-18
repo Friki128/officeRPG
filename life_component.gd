@@ -27,3 +27,6 @@ func percentage_heal(ammount):
 
 func die():
 	emit_signal("died")
+	
+func set_initial_hp(ammount):
+	initial_hp = ammount

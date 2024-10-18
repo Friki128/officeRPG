@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6bugwj8osdhk"]
+
+[ext_resource type="Script" path="res://battler.gd" id="1_fbtbt"]
+[ext_resource type="PackedScene" uid="uid://ch05x2v6asdxp" path="res://life_component.tscn" id="2_1krhh"]
+
+[node name="battler" type="Node"]
+script = ExtResource("1_fbtbt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="lifeComponent" parent="." instance=ExtResource("2_1krhh")]
