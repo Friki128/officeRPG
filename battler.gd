@@ -1,4 +1,5 @@
 extends Node
+@export var battlerName : String
 @export var moveset:Array[Node]
 @onready var lifeComponent = get_node("lifeComponent")
 @export var hp = 100
@@ -27,9 +28,7 @@ func pick_random_move():
 func pick_move(move):
 	statusComponent.afflict_start()
 	if incapacitated: return
-	var target = rival
-	if move.getTargetType() == "Self": target = self
-	move.activate(target, bonusAccuracy, bonusDamage)
+	move.activate(rival, self, bonusAccuracy, bonusDamage)
 	statusComponent.afflict_end()
 	setIncapacitated(false)
 
@@ -69,3 +68,6 @@ func setBonuses(damage, defense, accuracy, dodge, speed):
 	bonusAccuracy = accuracy
 	bonusDodge = dodge
 	speedBonus = speed
+
+func getName():
+	return battlerName

@@ -15,7 +15,8 @@ func checkStatus():
 	
 func afflict_end():
 	match status:
-		"burned":
+		"Burned":
+			print(target.getName() + " is burned and takes damage")
 			target.hit(5,"Percentage",100)
 		"Bold":
 			target.setBonuses(25*stage, -10*stage, -5*stage, -10*stage, 5*stage)
@@ -27,17 +28,21 @@ func afflict_end():
 			target.setBonuses(0,0,0,0,0)
 	turns -= 1
 	if turns < 0:
-		if status == "Resting": target.full_heal()
-		turns = 0
-		status = null
+		if status == "Resting": 
+			print(target.getName() + " is fully rested and will get fully healed")
+			target.full_heal()
+		removeStatus()
 
 func afflict_start():
 	match status:
 		"Resting":
+			print(target.getName() + "is resting and will not be able to move")
 			target.setIncapacitated(true)
 		"Electrocuted":
 			var chance = randi_range(0,100)
-			if chance > 50: target.setIncapacitated(true)
+			if chance > 50: 
+				print(target.getName() + " is electrocuted and will not be able to move")
+				target.setIncapacitated(true)
 		"Bold":
 			target.setBonuses(25*stage, -10*stage, -5*stage, -10*stage, 5*stage)
 		"Fast":
@@ -53,6 +58,7 @@ func addTarget(new_target):
 	target = new_target
 
 func removeStatus():
+	print(target.getName() + " is no longer" + status)
 	status = null
 	turns = 0
 	stage = 1
