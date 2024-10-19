@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfxaskeqlfkpi"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_g7um0"]
+
+[node name="LooseWire" instance=ExtResource("1_g7um0")]
+battlerName = "Loose Wire"
+moveset = Array[String](["power_surge", "power_surge", "power_surge", "power_surge"])

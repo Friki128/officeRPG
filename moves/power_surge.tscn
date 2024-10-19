@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://co8ft1n0orul1"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_po7u6"]
+
+[node name="PowerSurge" type="Node"]
+script = ExtResource("1_po7u6")
+moveName = "Power Surge"
+targetType = 1
+speed = 30
+damage = 25
+accuracy = 80
+enemyStatus = 2
+enemyTurns = 4
+description = "There is a sudden power surge that electrocutes your employee for 3 turn"

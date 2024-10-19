@@ -1,4 +1,5 @@
 extends Node
+class_name Move
 enum types {Normal, Percentage}
 enum targetTypes {Self, Enemy}
 enum statusTypes {Null, Burned, Electrocuted, Resting, Bold, Clean, Motivated, Fast}
@@ -18,21 +19,19 @@ enum statusTypes {Null, Burned, Electrocuted, Resting, Bold, Clean, Motivated, F
 
 func activate(rival, caster, bonusAccuracy, bonusDamage):
 	var healed = caster.heal(heal, type, accuracy)
-	var damaged = rival.damage(damage + bonusDamage, type, accuracy + bonusAccuracy)
-	
+	var damaged = rival.hit(damage + bonusDamage, type, accuracy + bonusAccuracy)
+	print(caster.getName() + " used " + moveName)
 	if damage != 0:
-		print(caster.getName() + "used " + moveName)
 		if damaged:
 			print(" and hit " + rival.getName())
 		else:
-			print(" and missed")
+			print(" and missed the hit")
 	
 	if heal != 0:
-		print(caster.getName() + "used " + moveName)
 		if healed:
 			print(" and healed")
 		else:
-			print(" and missed")
+			print(" and failed to heal")
 		
 		
 	if enemyStatus != statusTypes.Null and damaged:
@@ -42,11 +41,14 @@ func activate(rival, caster, bonusAccuracy, bonusDamage):
 	
 	if full_heal: 
 		var fully_healed = caster.full_heal(accuracy)
-		if fully_healed: print(caster.getName() + "used fully healed")
-		else: print(caster.getName() + "used and failed to heal itself")
+		if fully_healed: print("and fully fully healed")
+		else: print("and failed to heal itself")
 
 func getTargetType():
 	return targetType
 	
 func getName():
 	return moveName
+	
+func getSpeed():
+	return speed

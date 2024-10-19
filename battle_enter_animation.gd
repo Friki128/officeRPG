@@ -1,5 +1,6 @@
 extends Control
 
+@export var world : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +13,6 @@ func _process(delta: float) -> void:
 
 func play():
 	$AnimationPlayer.play("transitions")
+
+func toggleBattle():
+	world.toggleBattle()

@@ -4,7 +4,7 @@ signal random_encounter
 const SPEED = 100.0
 var facing = "down"
 @onready var anim = get_node("AnimatedSprite2D")
-var employee
+var employee = load("res://Battlers/LooseWire.tscn")
 var steps = randi_range(15,100)
 
 func _physics_process(delta: float) -> void:
@@ -52,3 +52,6 @@ func _physics_process(delta: float) -> void:
 	
 
 	move_and_slide()
+
+func getEmployee():
+	return employee

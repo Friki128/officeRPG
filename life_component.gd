@@ -30,3 +30,6 @@ func die():
 	
 func set_initial_hp(ammount):
 	initial_hp = ammount
+
+func getInitialHp():
+	return initial_hp

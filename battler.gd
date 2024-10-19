@@ -1,11 +1,14 @@
-extends Node
+extends Node2D
+class_name Battler
 @export var battlerName : String
-@export var moveset:Array[Node]
+@export var moveset:Array[String]
+@onready var animation = get_node("Sprite2D")
+var moves : Array[Node]
 @onready var lifeComponent = get_node("lifeComponent")
 @export var hp = 100
 @onready var statusComponent = get_node("statusComponent")
 @export var description : String
-var rival = null
+var rival = self
 var bonusAccuracy = 0
 var bonusDamage = 0
 var bonusDefense = 0
@@ -18,12 +21,16 @@ func _ready():
 	lifeComponent.set_initial_hp(hp)
 	full_heal(100)
 	statusComponent.addTarget(self)
-
+	for move in moveset:
+		moves.append(load("res://moves/" + move + ".tscn").instantiate())
+	animation.play(battlerName)
+	
+	
 func applyStatus(status, turns):
 	statusComponent.addStatus(status, turns)
 
 func pick_random_move():
-	pick_move(moveset.pick_random())
+	return moves.pick_random()
 	
 func pick_move(move):
 	statusComponent.afflict_start()
@@ -35,7 +42,7 @@ func pick_move(move):
 func hit(ammount, type, accuracy):
 	var hit_attempt = randi_range(0,100)
 	if hit_attempt + bonusDodge > accuracy: return false
-	if type == "Normal":
+	if type == Move.types.Normal:
 		lifeComponent.damage(ammount - bonusDefense)
 	else:
 		lifeComponent.percentage_damage(ammount)
@@ -44,7 +51,7 @@ func hit(ammount, type, accuracy):
 func heal(ammount, type, accuracy):
 	var heal_attempt = randi_range(0,100)
 	if heal_attempt > accuracy: return false
-	if type == "Normal":
+	if type == Move.types.Normal:
 		lifeComponent.heal(ammount)
 	else:
 		lifeComponent.percentage_heal(ammount)
@@ -71,3 +78,19 @@ func setBonuses(damage, defense, accuracy, dodge, speed):
 
 func getName():
 	return battlerName
+
+func getSpeed():
+	return speedBonus
+	
+func getMoves():
+	return moves
+	
+func getAnimation():
+	print(animation)
+	return animation
+	
+func getHp():
+	return hp
+
+func getCurrentHp():
+	return lifeComponent.getInitialHp()
