@@ -5,6 +5,7 @@ var enemyBattler
 var enemies
 var turn = 0
 var enemyIndex = 0
+@onready var log = $Control/CenterContainer/VBoxContainer/RichTextLabel/MarginContainer/RichTextLabel
 @export var animation : Node
 
 func startBattle(battler1, currentEnemies):
@@ -37,11 +38,12 @@ func startBattle(battler1, currentEnemies):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.visible = false
+	Logger.connect("logText", logEvent)
 
 func nextTurn():
 	updateGameInfo()
 	turn += 1
-	print("Turn: " + str(turn))
+	Logger.doLog("Turn: " + str(turn) + "\n")
 
 func updateGameInfo():
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerStatus.text = playerBattler.getStatus()
@@ -59,6 +61,7 @@ func endBattle():
 	animation.play()
 
 func moveSelectedByPlayer(move):
+	log.text = ""
 	var enemyMove = enemyBattler.pick_random_move()
 	var enemySpeed = enemyBattler.getSpeed() + enemyMove.getSpeed()
 	var playerSpeed = playerBattler.getSpeed() + move.getSpeed()
@@ -69,3 +72,6 @@ func moveSelectedByPlayer(move):
 		playerBattler.pick_move(move)
 		enemyBattler.pick_move(enemyMove)
 	nextTurn()
+
+func logEvent(text):
+	log.text += text

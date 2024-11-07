@@ -22,18 +22,18 @@ enum statusTypes {Null, Burned, Electrocuted, Resting, Bold, Clean, Motivated, F
 func activate(rival, caster, bonusAccuracy, bonusDamage):
 	var healed = caster.heal(heal, type, accuracy)
 	var damaged = rival.hit(damage + bonusDamage, type, accuracy + bonusAccuracy)
-	print(caster.getName() + " used " + moveName)
+	Logger.doLog(caster.getName() + " used " + moveName)
 	if damage != 0:
 		if damaged:
-			print(" and hit " + rival.getName())
+			Logger.doLog(" and hit " + rival.getName() +"\n")
 		else:
-			print(" and missed the hit")
+			Logger.doLog(" and missed the hit.\n")
 	
 	if heal != 0:
 		if healed:
-			print(" and healed")
+			Logger.doLog(" and healed\n")
 		else:
-			print(" and failed to heal")
+			Logger.doLog(" and failed to heal\n")
 		
 		
 	if enemyStatus != statusTypes.Null and ((healed and heal != 0) or (damaged and damage != 0) or unconditional):
@@ -43,8 +43,8 @@ func activate(rival, caster, bonusAccuracy, bonusDamage):
 	
 	if full_heal: 
 		var fully_healed = caster.full_heal(accuracy)
-		if fully_healed: print("and fully fully healed")
-		else: print("and failed to heal itself")
+		if fully_healed: Logger.doLog(" and fully fully healed.\n")
+		else: Logger.doLog(" and failed to heal itself.\n")
 
 func getTargetType():
 	return targetType

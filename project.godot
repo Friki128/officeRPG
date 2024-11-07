@@ -15,6 +15,10 @@ run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Logger="*res://logger.tscn"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
