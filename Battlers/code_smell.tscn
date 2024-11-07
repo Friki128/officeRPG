@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://x5p1ooyx1yy2"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_0cpg2"]
+[ext_resource type="Texture2D" uid="uid://by66xs7uej0u3" path="res://assets/characterSprites/codeSmell.png" id="2_cciwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0shot"]
+atlas = ExtResource("2_cciwb")
+region = Rect2(0, 0, 637, 601)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coob4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0shot")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="code_smell" instance=ExtResource("1_0cpg2")]
+battlerName = "Code Smell"
+moveset = Array[String](["confuse", "slow_down", "slow_down", "confuse"])
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_coob4")

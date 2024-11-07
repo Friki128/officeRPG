@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bshuhqlrl525x"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_p7mkx"]
+
+[node name="boring_obligation" type="Node"]
+script = ExtResource("1_p7mkx")
+moveName = "Boring Obligation"
+targetType = 1
+speed = 1
+damage = 20
+accuracy = 100
+description = "The employee does the boring tasks"

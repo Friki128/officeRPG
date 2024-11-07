@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ftxaarmtp2mr"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_l5n6w"]
+
+[node name="problem_solving" type="Node"]
+script = ExtResource("1_l5n6w")
+moveName = "Problem Solving"
+targetType = 1
+speed = 2
+damage = 50
+accuracy = 75
+casterStatus = 6
+casterTurns = 2
+description = "The employee uses problem solving to gain a boost motivation and does the work"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcvgojr3lld7f"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_f26bm"]
+[ext_resource type="Texture2D" uid="uid://uj3hms0aoa53" path="res://assets/characterSprites/sansUndertale.png" id="2_84llo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r24a"]
+atlas = ExtResource("2_84llo")
+region = Rect2(25, 0, 293, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nk6tk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r24a")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="sans_undertale" instance=ExtResource("1_f26bm")]
+battlerName = "Sans Undertale"
+moveset = Array[String](["bone_throw", "bone_throw", "bone_spike", "gaster_blaster"])
+hp = 50
+description = "A funny looking skeleton"
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_nk6tk")

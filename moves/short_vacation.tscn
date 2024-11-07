@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://g37ho8rx8dol"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_o8ync"]
+
+[node name="short_vacation" type="Node"]
+script = ExtResource("1_o8ync")
+moveName = "Short Vacation"
+accuracy = 100
+casterStatus = 3
+casterTurns = 1
+description = "The Employee takes a short rest"

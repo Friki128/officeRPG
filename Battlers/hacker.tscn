@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cplqs6ipmcd85"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_1w4kl"]
+[ext_resource type="Texture2D" uid="uid://c2h6yln724626" path="res://assets/characterSprites/hacker.png" id="2_fjgpl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xe8gr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fjgpl")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="hacker" instance=ExtResource("1_1w4kl")]
+battlerName = "Hacker"
+moveset = Array[String](["steal_credentials", "phishing", "exploit", "urgency"])
+hp = 75
+description = "Somone trying to infiltrate the system"
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_xe8gr")

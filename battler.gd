@@ -23,8 +23,8 @@ func _ready():
 	statusComponent.addTarget(self)
 	for move in moveset:
 		moves.append(load("res://moves/" + move + ".tscn").instantiate())
-	animation.play(battlerName)
-	
+	animation.play("combat")
+	#pick_move(pick_random_move())
 	
 func applyStatus(status, turns):
 	statusComponent.addStatus(status, turns)
@@ -86,7 +86,6 @@ func getMoves():
 	return moves
 	
 func getAnimation():
-	print(animation)
 	return animation
 	
 func getHp():
@@ -94,3 +93,9 @@ func getHp():
 
 func getCurrentHp():
 	return lifeComponent.getInitialHp()
+	
+func getStatus():
+	var currentStatus = statusComponent.checkStatus()
+	if currentStatus != Move.statusTypes.Null:
+		return Move.statusTypes.keys()[currentStatus]
+	return ""

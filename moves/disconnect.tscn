@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdk7yj3v5f53e"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_np12j"]
+
+[node name="disconnect" type="Node"]
+script = ExtResource("1_np12j")
+moveName = "Disconnect"
+targetType = 1
+speed = 2
+damage = 25
+accuracy = 70
+enemyStatus = 2
+enemyTurns = 2
+description = "Lose connection"

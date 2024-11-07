@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct8qx35o65l8n"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_kpek8"]
+
+[node name="frustrate" type="Node"]
+script = ExtResource("1_kpek8")
+moveName = "Frustrate"
+targetType = 1
+damage = 10
+enemyStatus = 1
+enemyTurns = 1
+description = "The employee gets frustrated"

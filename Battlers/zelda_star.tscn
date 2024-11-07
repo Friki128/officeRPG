@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://yv3oq4e0yep3"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_4gvkg"]
+[ext_resource type="Texture2D" uid="uid://cbio2q163j55y" path="res://assets/characterSprites/zelda_star.png" id="2_fgmgh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3u57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fgmgh")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="zelda_star" instance=ExtResource("1_4gvkg")]
+battlerName = "Zelda, Star Employee"
+moveset = Array[String](["clean_code", "problem_solving", "short_vacation", "innovative_idea"])
+hp = 300
+description = "Zelda is the star employee"
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_q3u57")

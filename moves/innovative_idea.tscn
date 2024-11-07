@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b02irrtw2243c"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_vaihw"]
+
+[node name="innovative_idea" type="Node"]
+script = ExtResource("1_vaihw")
+moveName = "Innovative Idea"
+targetType = 1
+speed = 2
+damage = 50
+accuracy = 75
+casterStatus = 4
+casterTurns = 2
+description = "The employee uses innovatives ideas to get the work done"

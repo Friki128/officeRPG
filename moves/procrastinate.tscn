@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6r3h5vuf60p7"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_reu74"]
+
+[node name="procrastinate" type="Node"]
+script = ExtResource("1_reu74")
+moveName = "Procrastinate"
+accuracy = 100
+casterStatus = 7
+casterTurns = 5
+description = "The employee procrastinates the work to do it later"

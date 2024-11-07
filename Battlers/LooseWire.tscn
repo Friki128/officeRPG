@@ -1,7 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfxaskeqlfkpi"]
+[gd_scene load_steps=4 format=3 uid="uid://bfxaskeqlfkpi"]
 
 [ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_g7um0"]
+[ext_resource type="Texture2D" uid="uid://rone4mr3m28a" path="res://assets/characterSprites/loose_wire.png" id="2_tqnem"]
 
-[node name="LooseWire" instance=ExtResource("1_g7um0")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqmvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tqnem")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="loose_wire" instance=ExtResource("1_g7um0")]
 battlerName = "Loose Wire"
-moveset = Array[String](["power_surge", "power_surge", "power_surge", "power_surge"])
+moveset = Array[String](["power_surge", "power_surge", "urgency", "urgency"])
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_mqmvf")

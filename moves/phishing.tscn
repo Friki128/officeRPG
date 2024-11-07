@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://mvvy8xagavs4"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_j3154"]
+
+[node name="phishing" type="Node"]
+script = ExtResource("1_j3154")
+moveName = "Phishing"
+targetType = 1
+damage = 50
+accuracy = 75
+description = "A hacker tries to phis your employee"

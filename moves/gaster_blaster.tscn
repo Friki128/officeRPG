@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c451plgy7ecg8"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_eyy2n"]
+
+[node name="gaster_blaster" type="Node"]
+script = ExtResource("1_eyy2n")
+moveName = "Gaster Blaster"
+targetType = 1
+type = 1
+speed = 1
+damage = 20
+accuracy = 50
+description = "A blast of light"

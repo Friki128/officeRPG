@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgl2q81oax7si"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_lk5b2"]
+
+[node name="coffe_break" type="Node"]
+script = ExtResource("1_lk5b2")
+moveName = "Coffe Break"
+targetType = 1
+damage = 20
+accuracy = 100
+casterStatus = 3
+casterTurns = 3
+description = "The employee takes a coffe break"

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://csfjmrrpa6qni"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_si6jt"]
+[ext_resource type="Texture2D" uid="uid://dj0gemd8pvqdh" path="res://assets/characterSprites/Maria_lazy.png" id="2_lgvbg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ow2g5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lgvbg")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="maria_lazy" instance=ExtResource("1_si6jt")]
+battlerName = "Maria, the lazy"
+moveset = Array[String](["procrastinate", "personal_project", "delayed_work", "boring_obligation"])
+hp = 250
+description = "Maria is a kinda lazy worker that has great talent."
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ow2g5")

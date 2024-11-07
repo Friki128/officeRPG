@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://df5mvukylbxko"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_2d4vl"]
+
+[node name="confuse" type="Node"]
+script = ExtResource("1_2d4vl")
+moveName = "Confuse"
+targetType = 1
+speed = 1
+accuracy = 100
+enemyStatus = 1
+enemyTurns = 2
+description = "Confuses the target with its nature"

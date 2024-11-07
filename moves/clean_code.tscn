@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgr0pgipop44l"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_wnfv3"]
+
+[node name="clean_code" type="Node"]
+script = ExtResource("1_wnfv3")
+moveName = "Clean Code"
+targetType = 1
+type = 1
+speed = 1
+damage = 50
+accuracy = 75
+casterStatus = 5
+casterTurns = 2
+description = "The employee uses clean code to gain productivity "

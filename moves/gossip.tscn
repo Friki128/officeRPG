@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpy6puapuv0l8"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_0w70t"]
+
+[node name="gossip" type="Node"]
+script = ExtResource("1_0w70t")
+moveName = "Gossip"
+speed = 2
+heal = 100
+accuracy = 50
+description = "Gossip around the office"

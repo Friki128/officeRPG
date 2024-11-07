@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var playerBattler : Node = preload("res://Battlers/LooseWire.tscn").instantiate()
+@onready var playerBattler : Node = preload("res://Battlers/sans_undertale.tscn").instantiate()
 @onready var enemyBattler : Node = preload("res://Battlers/LooseWire.tscn").instantiate()
 var turn = 0
 @export var animation : Node
@@ -11,8 +11,6 @@ func startBattle(battler1, battler2):
 	
 	add_child(enemyBattler)
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/MarginContainer/playerPosition.add_child(playerBattler)
-	playerBattler.scale.x = 4
-	playerBattler.scale.y = 4
 	var playerMoves = playerBattler.getMoves()
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button.text = playerMoves.pop_front().getName()
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button2.text = playerMoves.pop_front().getName()
@@ -31,6 +29,8 @@ func nextTurn():
 	print("Turn: " + str(turn))
 
 func updateGameInfo():
+	print(playerBattler.getStatus())
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerStatus.text = playerBattler.getStatus()
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerName.text = playerBattler.getName()
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerHp.text = str(playerBattler.getCurrentHp()) + "/" + str(playerBattler.getHp())
 

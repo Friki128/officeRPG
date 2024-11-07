@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ew76p4v8alm"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_prich"]
+
+[node name="spray_ink" type="Node"]
+script = ExtResource("1_prich")
+moveName = "Spray Ink"
+targetType = 1
+type = 1
+speed = -1
+damage = 50
+accuracy = 40
+description = "The printer sprays ink everywhere"

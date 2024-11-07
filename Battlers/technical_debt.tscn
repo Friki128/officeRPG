@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckw8rnykccec1"]
+
+[ext_resource type="PackedScene" uid="uid://b6bugwj8osdhk" path="res://battler.tscn" id="1_l4r2m"]
+[ext_resource type="Texture2D" uid="uid://buxp4qvblnh7a" path="res://assets/characterSprites/technical_debt.png" id="2_0kcvm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvngm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0kcvm")
+}],
+"loop": true,
+"name": &"combat",
+"speed": 30.0
+}]
+
+[node name="technical_debt" instance=ExtResource("1_l4r2m")]
+battlerName = "Technical Debt"
+moveset = Array[String](["slow_down", "error", "frustrate", "temporal_fix"])
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_rvngm")

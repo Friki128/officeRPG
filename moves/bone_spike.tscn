@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ysk2pj1o44t"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_sxahr"]
+
+[node name="bone_spike" type="Node"]
+script = ExtResource("1_sxahr")
+moveName = "Bone Spike"
+targetType = 1
+damage = 40
+accuracy = 30
+description = "Bone spikes attack from below"

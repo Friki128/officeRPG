@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://o65xdfk817hr"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_f8ssg"]
+
+[node name="delayed_work" type="Node"]
+script = ExtResource("1_f8ssg")
+moveName = "Delayed Work"
+targetType = 1
+speed = -2
+damage = 100
+accuracy = 100
+casterStatus = 3
+casterTurns = 8
+description = "The employee does the work that was delayed, then, goes to sleep"

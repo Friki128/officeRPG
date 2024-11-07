@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://diy5okwdj6ma0"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_fcbxr"]
+
+[node name="urgency" type="Node"]
+script = ExtResource("1_fcbxr")
+moveName = "Urgency"
+speed = 2
+accuracy = 100
+casterStatus = 7
+casterTurns = 4
+description = "The task is urgent"

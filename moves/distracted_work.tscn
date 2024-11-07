@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnf8i8egomq8o"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_54p88"]
+
+[node name="distracted_work" type="Node"]
+script = ExtResource("1_54p88")
+moveName = "Distracted Work"
+targetType = 1
+type = 1
+speed = -1
+damage = 100
+accuracy = 10
+description = "The employee works while distracted"

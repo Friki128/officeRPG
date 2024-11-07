@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c47e500fgxam6"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_bttto"]
+
+[node name="slow_down" type="Node"]
+script = ExtResource("1_bttto")
+moveName = "Slow Down"
+type = 1
+heal = 70
+accuracy = 100
+enemyStatus = 1
+enemyTurns = 2
+description = "Slow down the resolution of the problems"

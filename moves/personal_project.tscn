@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://deprhlm3uqmvl"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_ak4v7"]
+
+[node name="personal_project" type="Node"]
+script = ExtResource("1_ak4v7")
+moveName = "Start Personal Project"
+casterStatus = 6
+casterTurns = 5
+description = "The employee starts a personal project instead of working"

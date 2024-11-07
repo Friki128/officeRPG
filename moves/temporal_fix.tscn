@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://v8ef66h0ygyb"]
+
+[ext_resource type="Script" path="res://move.gd" id="1_n3qs5"]
+
+[node name="temporal_fix" type="Node"]
+script = ExtResource("1_n3qs5")
+moveName = "Temporaly fix itself"
+damage = 15
+accuracy = 70
+casterStatus = 3
+casterTurns = 2
+description = "The problem seems to disappear for a moment"
