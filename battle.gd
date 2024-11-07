@@ -1,21 +1,36 @@
 extends CanvasLayer
 
-@onready var playerBattler : Node = preload("res://Battlers/sans_undertale.tscn").instantiate()
-@onready var enemyBattler : Node = preload("res://Battlers/LooseWire.tscn").instantiate()
+var playerBattler
+var enemyBattler
+var enemies
 var turn = 0
+var enemyIndex = 0
 @export var animation : Node
 
-func startBattle(battler1, battler2):
+func startBattle(battler1, currentEnemies):
 	playerBattler = battler1
-	enemyBattler = battler2
-	
-	add_child(enemyBattler)
+	enemies = currentEnemies
+	enemyBattler = enemies[enemyIndex].instantiate()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/enemyPosition.add_child(enemyBattler)
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/MarginContainer/playerPosition.add_child(playerBattler)
+	playerBattler.setRival(enemyBattler)
+	enemyBattler.setRival(playerBattler)
 	var playerMoves = playerBattler.getMoves()
-	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button.text = playerMoves.pop_front().getName()
-	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button2.text = playerMoves.pop_front().getName()
-	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button3.text = playerMoves.pop_front().getName()
-	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button4.text = playerMoves.pop_front().getName()
+	var move1 = playerMoves.pop_front()
+	var move2 = playerMoves.pop_front()
+	var move3 = playerMoves.pop_front()
+	var move4 = playerMoves.pop_front()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button.text = move1.getName()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button2.text = move2.getName()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button3.text = move3.getName()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button4.text = move4.getName()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/playerBar.max_value = playerBattler.getHp()
+	
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button.setMove(move1)
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button2.setMove(move2)
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button3.setMove(move3)
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button4.setMove(move4)
+	$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyBar.max_value = enemyBattler.getHp()
 	turn = 0
 	self.visible = true
 	nextTurn()
@@ -29,10 +44,15 @@ func nextTurn():
 	print("Turn: " + str(turn))
 
 func updateGameInfo():
-	print(playerBattler.getStatus())
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerStatus.text = playerBattler.getStatus()
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerName.text = playerBattler.getName()
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/PlayerHp.text = str(playerBattler.getCurrentHp()) + "/" + str(playerBattler.getHp())
+	$Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/playerBar.value = playerBattler.getCurrentHp()
+	
+	$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyName.text = enemyBattler.getName()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyStatus.text = enemyBattler.getStatus()
+	$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyHp.text = str(enemyBattler.getCurrentHp()) + "/" + str(enemyBattler.getHp())
+	$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyBar.value = enemyBattler.getCurrentHp()
 
 func endBattle():
 	self.visible = false
@@ -48,3 +68,4 @@ func moveSelectedByPlayer(move):
 	elif enemySpeed <= playerSpeed:
 		playerBattler.pick_move(move)
 		enemyBattler.pick_move(enemyMove)
+	nextTurn()

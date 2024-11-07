@@ -6,6 +6,7 @@ enum statusTypes {Null, Burned, Electrocuted, Resting, Bold, Clean, Motivated, F
 @export var moveName : String
 @export var targetType : targetTypes
 @export var type : types
+@export var unconditional : bool
 @export var speed : int
 @export var damage : int
 @export var heal : int
@@ -16,6 +17,7 @@ enum statusTypes {Null, Burned, Electrocuted, Resting, Bold, Clean, Motivated, F
 @export var enemyStatus : statusTypes
 @export var enemyTurns : int
 @export var description : String
+
 
 func activate(rival, caster, bonusAccuracy, bonusDamage):
 	var healed = caster.heal(heal, type, accuracy)
@@ -34,9 +36,9 @@ func activate(rival, caster, bonusAccuracy, bonusDamage):
 			print(" and failed to heal")
 		
 		
-	if enemyStatus != statusTypes.Null and damaged:
+	if enemyStatus != statusTypes.Null and ((healed and heal != 0) or (damaged and damage != 0) or unconditional):
 		rival.applyStatus(enemyStatus, enemyTurns)
-	if casterStatus != statusTypes.Null and healed:
+	if casterStatus != statusTypes.Null and ((healed and heal != 0) or (damaged and damage != 0) or unconditional):
 		caster.applyStatus(casterStatus, casterTurns)
 	
 	if full_heal: 

@@ -5,6 +5,7 @@
 [node name="urgency" type="Node"]
 script = ExtResource("1_fcbxr")
 moveName = "Urgency"
+unconditional = true
 speed = 2
 accuracy = 100
 casterStatus = 7

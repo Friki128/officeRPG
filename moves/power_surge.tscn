@@ -6,7 +6,7 @@
 script = ExtResource("1_po7u6")
 moveName = "Power Surge"
 targetType = 1
-speed = 30
+speed = 2
 damage = 25
 accuracy = 80
 enemyStatus = 2

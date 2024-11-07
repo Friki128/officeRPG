@@ -5,7 +5,8 @@
 [node name="short_vacation" type="Node"]
 script = ExtResource("1_o8ync")
 moveName = "Short Vacation"
+unconditional = true
 accuracy = 100
 casterStatus = 3
-casterTurns = 1
+casterTurns = 2
 description = "The Employee takes a short rest"

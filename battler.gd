@@ -24,7 +24,6 @@ func _ready():
 	for move in moveset:
 		moves.append(load("res://moves/" + move + ".tscn").instantiate())
 	animation.play("combat")
-	#pick_move(pick_random_move())
 	
 func applyStatus(status, turns):
 	statusComponent.addStatus(status, turns)
@@ -34,10 +33,9 @@ func pick_random_move():
 	
 func pick_move(move):
 	statusComponent.afflict_start()
-	if incapacitated: return
-	move.activate(rival, self, bonusAccuracy, bonusDamage)
+	if !incapacitated: 
+		move.activate(rival, self, bonusAccuracy, bonusDamage)
 	statusComponent.afflict_end()
-	setIncapacitated(false)
 
 func hit(ammount, type, accuracy):
 	var hit_attempt = randi_range(0,100)
@@ -89,13 +87,15 @@ func getAnimation():
 	return animation
 	
 func getHp():
-	return hp
+	return lifeComponent.getInitialHp()
 
 func getCurrentHp():
-	return lifeComponent.getInitialHp()
+	return lifeComponent.getHp()
 	
 func getStatus():
 	var currentStatus = statusComponent.checkStatus()
 	if currentStatus != Move.statusTypes.Null:
 		return Move.statusTypes.keys()[currentStatus]
 	return ""
+func setRival(target):
+	rival = target

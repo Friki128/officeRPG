@@ -17,12 +17,13 @@ layer_3/tile_data = PackedInt32Array(589835, 196610, 0, 655371, 196610, 1, 39322
 
 [node name="player" parent="." instance=ExtResource("1_s1kig")]
 
-[node name="Battle" parent="player" instance=ExtResource("5_qu70i")]
-visible = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="player"]
 
 [node name="battle_enter_animation" parent="player/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("4_hx60a")]
+mouse_filter = 2
 world = NodePath("../../..")
+
+[node name="Battle" parent="player" instance=ExtResource("5_qu70i")]
+visible = false
 
 [connection signal="random_encounter" from="player" to="." method="_on_player_random_encounter"]

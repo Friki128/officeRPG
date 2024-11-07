@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cav0gpd1vthmw"]
+[gd_scene load_steps=3 format=3 uid="uid://cav0gpd1vthmw"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_y0ymu"]
+[ext_resource type="Script" path="res://buttonSelector.gd" id="2_yuy1l"]
 
 [node name="Battle" type="CanvasLayer"]
 script = ExtResource("1_y0ymu")
@@ -20,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.465328, 0.504987, 0.693872, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
@@ -29,13 +31,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="Control/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="enemyName" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TestName"
+
+[node name="enemyStatus" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Status"
+
+[node name="enemyHp" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "50/50"
+
+[node name="enemyBar" type="ProgressBar" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+modulate = Color(0, 0.831373, 0, 1)
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.831373, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.831373, 0, 1)
+step = 1.0
+value = 100.0
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 96
+
+[node name="enemyPosition" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -76,7 +125,7 @@ text = "Status"
 layout_mode = 2
 text = "45/50"
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+[node name="playerBar" type="ProgressBar" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(150, 10)
 layout_mode = 2
@@ -95,15 +144,25 @@ size_flags_vertical = 8
 [node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Move 1"
+script = ExtResource("2_yuy1l")
 
 [node name="Button2" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Move 2"
+script = ExtResource("2_yuy1l")
 
 [node name="Button3" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Move 3"
+script = ExtResource("2_yuy1l")
 
 [node name="Button4" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Move 4"
+script = ExtResource("2_yuy1l")
+
+[connection signal="mouse_entered" from="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button" to="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button" method="_on_mouse_entered"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button" to="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button2" to="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button2" method="_on_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button3" to="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button3" method="_on_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button4" to="Control/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button4" method="_on_pressed"]

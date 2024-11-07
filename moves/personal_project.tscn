@@ -5,6 +5,7 @@
 [node name="personal_project" type="Node"]
 script = ExtResource("1_ak4v7")
 moveName = "Start Personal Project"
+unconditional = true
 casterStatus = 6
 casterTurns = 5
 description = "The employee starts a personal project instead of working"

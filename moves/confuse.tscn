@@ -6,6 +6,7 @@
 script = ExtResource("1_2d4vl")
 moveName = "Confuse"
 targetType = 1
+unconditional = true
 speed = 1
 accuracy = 100
 enemyStatus = 1

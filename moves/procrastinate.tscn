@@ -5,6 +5,7 @@
 [node name="procrastinate" type="Node"]
 script = ExtResource("1_reu74")
 moveName = "Procrastinate"
+unconditional = true
 accuracy = 100
 casterStatus = 7
 casterTurns = 5
