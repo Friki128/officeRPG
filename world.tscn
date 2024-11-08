@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3i3eh6vnsmjd"]
+[gd_scene load_steps=7 format=3 uid="uid://3i3eh6vnsmjd"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_6cpxf"]
 [ext_resource type="PackedScene" uid="uid://ci0ngav5nqv0s" path="res://player.tscn" id="1_s1kig"]
 [ext_resource type="PackedScene" uid="uid://csglx2pawh2g5" path="res://tile_map.tscn" id="2_igkxh"]
 [ext_resource type="PackedScene" uid="uid://ba5j6rjkljbgi" path="res://battle_enter_animation.tscn" id="4_hx60a"]
 [ext_resource type="PackedScene" uid="uid://cav0gpd1vthmw" path="res://battle.tscn" id="5_qu70i"]
+[ext_resource type="PackedScene" uid="uid://df00cqcc7ibco" path="res://selector.tscn" id="6_n4mdv"]
 
 [node name="world" type="Node2D" node_paths=PackedStringArray("battle")]
 script = ExtResource("1_6cpxf")
@@ -22,6 +23,8 @@ layer_3/tile_data = PackedInt32Array(589835, 196610, 0, 655371, 196610, 1, 39322
 [node name="battle_enter_animation" parent="player/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("4_hx60a")]
 mouse_filter = 2
 world = NodePath("../../..")
+
+[node name="selectionPage" parent="player" instance=ExtResource("6_n4mdv")]
 
 [node name="Battle" parent="player" instance=ExtResource("5_qu70i")]
 visible = false
