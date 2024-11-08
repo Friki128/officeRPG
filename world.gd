@@ -21,8 +21,5 @@ func create_encounter():
 	$player/CanvasLayer/battle_enter_animation.play()
 
 func toggleBattle():
-	if battleStatus:
-		battle.endBattle()
-	else:
-		var currentEnemies = [enemies.pick_random(), enemies.pick_random(), enemies.pick_random()]
-		battle.startBattle(player.getEmployee().instantiate(), currentEnemies)
+	var currentEnemies = [enemies.pick_random(), enemies.pick_random(), enemies.pick_random()]
+	battle.startBattle(player.getEmployee().instantiate(), currentEnemies)

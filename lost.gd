@@ -1,7 +1,6 @@
-extends Control
+extends CanvasLayer
 
-@export var world : Node
-var doTrigger = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,10 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func play():
-	$AnimationPlayer.play("transitions")
 
-func toggleBattle():
-	if doTrigger:
-		world.toggleBattle()
-	doTrigger = !doTrigger
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://world.tscn")

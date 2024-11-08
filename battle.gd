@@ -9,9 +9,11 @@ var enemyIndex = 0
 @export var animation : Node
 
 func startBattle(battler1, currentEnemies):
+	get_tree().paused = true
 	playerBattler = battler1
 	enemies = currentEnemies
 	enemyBattler = enemies[enemyIndex].instantiate()
+	enemyIndex += 1
 	$Control/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/enemyPosition.add_child(enemyBattler)
 	$Control/CenterContainer/VBoxContainer/HBoxContainer2/MarginContainer/playerPosition.add_child(playerBattler)
 	playerBattler.setRival(enemyBattler)
@@ -41,6 +43,9 @@ func _ready() -> void:
 	Logger.connect("logText", logEvent)
 
 func nextTurn():
+	if checkDeath(): 
+		endBattle()
+		return
 	updateGameInfo()
 	turn += 1
 	Logger.doLog("Turn: " + str(turn) + "\n")
@@ -57,8 +62,12 @@ func updateGameInfo():
 	$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyBar.value = enemyBattler.getCurrentHp()
 
 func endBattle():
+	get_tree().paused = false
+	enemyIndex = 0
+	enemyBattler.queue_free()
+	playerBattler.queue_free()
 	self.visible = false
-	animation.play()
+	$"../CanvasLayer/battle_enter_animation".play()
 
 func moveSelectedByPlayer(move):
 	log.text = ""
@@ -75,3 +84,21 @@ func moveSelectedByPlayer(move):
 
 func logEvent(text):
 	log.text += text
+
+func checkDeath():
+	if enemyBattler.getCurrentHp() == 0:
+		if enemyIndex < 3:
+			Logger.doLog(enemyBattler.getName() + " was defeated.\n")
+			enemyBattler.queue_free()
+			enemyBattler = enemies[enemyIndex].instantiate()
+			enemyIndex += 1
+			$Control/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/enemyPosition.add_child(enemyBattler)
+			$Control/CenterContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/enemyBar.max_value = enemyBattler.getHp()
+			enemyBattler.setRival(playerBattler)
+			playerBattler.setRival(enemyBattler)
+		else:
+			return true
+	if playerBattler.getCurrentHp() == 0:
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://lost_page.tscn")
+	return false

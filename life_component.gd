@@ -12,7 +12,6 @@ func damage(ammount):
 	hp -= ammount
 	if hp < 1:
 		hp = 0
-		die()
 		
 func percentage_damage(ammount):
 	damage(ammount * initial_hp / 100)
@@ -24,9 +23,6 @@ func heal(ammount):
 			
 func percentage_heal(ammount):
 	heal(ammount * initial_hp / 100)
-
-func die():
-	emit_signal("died")
 	
 func set_initial_hp(ammount):
 	initial_hp = ammount
